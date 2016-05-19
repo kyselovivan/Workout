@@ -15,8 +15,7 @@ import android.widget.TextView;
 public class WorkoutDetailFragment extends Fragment {
 
     private long workoutId;
-    private TextView title;
-    private TextView description;
+
 
     public void setWorkout(long id){
         this.workoutId = id;
@@ -32,13 +31,13 @@ public class WorkoutDetailFragment extends Fragment {
     public void onStart(){
         super.onStart();
         View view = getView();
-        if(view != null){
-            title = (TextView)view.findViewById(R.id.textTitle);
-            description = (TextView)view.findViewById(R.id.textDescription);
+        //if(view != null){
+            TextView title = (TextView)view.findViewById(R.id.textTitle);
+            TextView description = (TextView)view.findViewById(R.id.textDescription);
             Workout workout = Workout.workouts[(int)workoutId];
             title.setText(workout.getName());
             description.setText(workout.getDescription());
-        }
+        //}
     }
 
 
