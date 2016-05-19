@@ -2,6 +2,7 @@ package ua.kyselov.android.workout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,4 +14,5 @@ public class MainActivity extends AppCompatActivity {
         WorkoutDetailFragment frag = (WorkoutDetailFragment)getFragmentManager().findFragmentById(R.id.detail_frag);
         frag.setWorkout(1);
     }
+
 }
