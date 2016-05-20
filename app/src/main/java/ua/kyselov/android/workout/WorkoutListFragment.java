@@ -1,6 +1,7 @@
 package ua.kyselov.android.workout;
 
 
+import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 /**
@@ -15,6 +17,11 @@ import android.widget.ArrayAdapter;
  */
 public class WorkoutListFragment extends ListFragment {
 
+    static interface WorkoutListListener{
+        void itemClicked(long id);
+    }
+
+    private WorkoutListListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +36,19 @@ public class WorkoutListFragment extends ListFragment {
         );
 
         setListAdapter(adapter);
-        return super.onCreateView(inflater,container,savedInstanceState);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    @Override
+    public void onAttach(Activity activity){
+        super.onAttach(activity);
+        this.listener = (WorkoutListListener)activity;
+    }
+
+    @Override
+    public void onListItemClick(ListView listView, View view, int position, long id){
+        if(listener != null){
+            listener.itemClicked(id);
+        }
+    }
 }
