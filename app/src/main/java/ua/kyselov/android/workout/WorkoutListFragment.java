@@ -51,4 +51,6 @@ public class WorkoutListFragment extends ListFragment {
             listener.itemClicked(id);
         }
     }
+
+
 }

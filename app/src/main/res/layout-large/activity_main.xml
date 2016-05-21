@@ -9,8 +9,13 @@
     <fragment
         class="ua.kyselov.android.workout.WorkoutListFragment"
         android:id="@+id/list_frag"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"></fragment>
 
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container"></FrameLayout>
 </LinearLayout>
