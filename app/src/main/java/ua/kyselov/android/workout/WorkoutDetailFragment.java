@@ -18,13 +18,9 @@ public class WorkoutDetailFragment extends Fragment {
     private long workoutId;
 
 
-    public void setWorkout(long id){
-        this.workoutId = id;
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         if(savedInstanceState!=null){
             workoutId = savedInstanceState.getLong("workoutId");
         }
@@ -36,17 +32,23 @@ public class WorkoutDetailFragment extends Fragment {
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.commit();
         }
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_workout_detail, container, false);
     }
 
-    public void onStart(){
+    @Override
+    public void onStart() {
         super.onStart();
         View view = getView();
-        if(view != null){
-            TextView title = (TextView)view.findViewById(R.id.textTitle);
-            TextView description = (TextView)view.findViewById(R.id.textDescription);
-            Workout workout = Workout.workouts[(int)workoutId];
-            title.setText(workout.getName());
+        if (view != null) {
+            TextView title = (TextView) view.findViewById(R.id.textTitle);
+            Workout workout = Workout.workouts[(int) workoutId]; title.setText(workout.getName());
+            TextView description = (TextView) view.findViewById(R.id.textDescription);
             description.setText(workout.getDescription());
         }
     }
@@ -54,6 +56,10 @@ public class WorkoutDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         savedInstanceState.putLong("workoutId", workoutId);
+    }
+
+    public void setWorkout(long id){
+        this.workoutId = id;
     }
 
 }

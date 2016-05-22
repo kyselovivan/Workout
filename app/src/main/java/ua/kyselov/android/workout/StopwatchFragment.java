@@ -110,4 +110,11 @@ public class StopwatchFragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putInt("seconds", seconds);
+        savedInstanceState.putBoolean("running", running);
+        savedInstanceState.putBoolean("wasRunning", wasRunning);
+    }
 }
